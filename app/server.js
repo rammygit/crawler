@@ -43,8 +43,8 @@ app.get('/chance', function (request, response) {
  * todo api for display todo
  */
 app.get('/todo', function (request, response) {
-    var data = util.readFileContent('todo.txt')
-    response.json(data)
+     util.readFileContent(response,'todo.txt')
+    //response.json(data)
 })
 
 /**

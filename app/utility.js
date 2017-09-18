@@ -14,7 +14,7 @@ const fs = require('fs');
      * reads the file in the async way.
      * @param fileName
      */
-    exports.readFileContent = function(fileName){
+    exports.readFileContent = function(response,fileName){
 
         console.info('started reading file...')
 
@@ -22,8 +22,8 @@ const fs = require('fs');
             if (err) {
                 return console.log(err)
             }
-            console.log(content)
-            return content;
+            //console.log(content)
+            response.json(content)
         })
     }
 
