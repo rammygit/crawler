@@ -22,7 +22,6 @@ const fs = require('fs');
             if (err) {
                 return console.log(err)
             }
-            //console.log(content)
             response.json(content)
         })
     }
