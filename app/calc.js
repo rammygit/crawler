@@ -3,6 +3,8 @@ const fs = require('fs');
 
 var content;
 
+
+
 /**
  * reads the file in the async way.
  * @param fileName
@@ -10,12 +12,12 @@ var content;
 function readFileContent(fileName){
 
 console.info('started reading file...')
-    fs.readFile(fileName, 'utf-8', function (err, content) {
+    fs.readFile(fileName, 'utf-8', function (err, ram) {
         if (err) {
             return console.log(err)
         }
 
-        console.log(content)
+        console.log(ram)
     })
 
     console.info('end reading file')
@@ -24,7 +26,10 @@ console.info('started reading file...')
 
 console.log(content)
 
-
+/**
+ *
+ * @param arr
+ */
 function sum (arr) {
     readFileContent('todo.txt')
     return arr.reduce(function(a, b) {
