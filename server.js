@@ -1,43 +1,31 @@
 
 const express = require('express')
 const util = require('./app/utility')
+const db = require('./app/connection')
+const dao = require('./app/dataUtil')
 const app = express()
 const port = 3001
 
-
-/**
- * implementing middlewares
- */
-app.use(function (request, response, next) {
-    console.log('First Middleware encountered for this request.')
-    next()
-})
-
-app.use(express.static(__dirname))
+//app.use(express.static(__dirname))
 
 /**
  * home page.
+ * loads the db.
  * serving the index.html from the current directory on hiting
  * localhost:port(3001)
  */
 app.get('/', function(request,response) {
-    response.sendFile(   + '/index.html');
+    // check if table got created on the first call. create the connection
+    console.log('calling root route.')
+    dao.initDB(db);
+    response.sendFile(__dirname+ '/index.html');
 });
-
-/**
- * second middlewares.
- * if you want to intercept.
- */
-app.use(function (request, response, next) {
-    request.chance = Math.random()
-    next()
-})
-
 
 /**
  * express gives default router for us to work with
  */
 app.get('/chance', function (request, response) {
+    console.log('calling chance api ')
     response.json({
         chance: request.chance
     })
@@ -47,6 +35,9 @@ app.get('/chance', function (request, response) {
  * todo api for display todo
  */
 app.get('/todo', function (request, response) {
+
+    console.log('calling todo .. ')
+
     util.readFileContent(response, '/Users/ramkumar/Documents/oracle/docs/todo.txt')
 })
 
