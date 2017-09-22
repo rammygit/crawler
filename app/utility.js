@@ -22,6 +22,11 @@ const fs = require('fs');
             if (err) {
                 return console.log(err)
             }
+            if(content){
+                //console.log(JSON.stringify(content))
+                var arr = content.toString().split('\n');
+                //console.log(JSON.stringify(arr))
+            }
             response.json(content)
         })
     }

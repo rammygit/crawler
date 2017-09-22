@@ -21,7 +21,7 @@ app.use(express.static(__dirname))
  * localhost:port(3001)
  */
 app.get('/', function(request,response) {
-    response.sendFile(__dirname + '/index.html');
+    response.sendFile(   + '/index.html');
 });
 
 /**

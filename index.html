@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Work Items</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
 </head>
 <body>
 
 <div id="app">
-    <p>{{message}}</p>
+    <div class="columns medium-3" v-for="result in results">
+        <div class="card">
+            <div class="card-divider">
+                {{ result.title }}
+            </div>
+            <div class="card-section">
+                <p>{{ result.abstract }}.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="vm.js"></script>
 </body>
 </html>
