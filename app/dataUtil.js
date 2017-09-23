@@ -9,7 +9,7 @@ const create_todos = "CREATE TABLE IF NOT EXISTS `todo` (\n" +
 
 const select_all_todos = "SELECT DISTINCT title,description,status FROM todo ORDER BY status;"
 
-
+const insert_todo = 'insert into todo(title,description,status)values(\'myitem\',\'great desc\',0);'
 
 /**
  * loads the sqlite3 using the sepcified the db path.
@@ -44,4 +44,18 @@ exports.getTodos = function(db,params,response){
       arr.push(row);
       return response.json(arr);      
     });   
+}
+
+/**
+ * [insertTodo insert todo into DB]
+ * @param  {[db connection]} db       [description]
+ * @param  {[array]} params   [description]
+ * @param  {[type]} response [description]
+ * @return {[type]}          [description]
+ */
+exports.insertTodo = function(db,params,response){
+    db.run(insert_todo,function(err){
+        if(err) throw err;
+        console.log(this.lastID)
+    })
 }

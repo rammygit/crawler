@@ -37,9 +37,8 @@ app.get('/chance', function (request, response) {
 app.get('/todo', function (request, response) {
 
     console.log('calling todo .. ')
-    dao.getTodos(db,[],response)
-    //util.readFileContent(response, '/Users/ramkumar/Documents/oracle/docs/todo.txt')
-    
+    dao.getTodos(db,[],response)   
+    dao.insertTodo(db,[],response)
 })
 
 /**
