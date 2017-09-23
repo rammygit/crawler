@@ -37,11 +37,13 @@ app.get('/chance', function (request, response) {
 app.get('/todo', function (request, response) {
 
     console.log('calling todo .. ')
-
-    util.readFileContent(response, '/Users/ramkumar/Documents/oracle/docs/todo.txt')
+    dao.getTodos(db,[],response)
+    //util.readFileContent(response, '/Users/ramkumar/Documents/oracle/docs/todo.txt')
+    
 })
 
 /**
+ * generic error handling. 
  * express way of handling error.
  * things to note, it has the error parameter and next parameter.
  * with next we can chain multiple error handlers.

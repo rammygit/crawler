@@ -1,11 +1,15 @@
 
 
-const create_todos = "CREATE TABLE IF NOT EXISTS `todo_test` (\n" +
+const create_todos = "CREATE TABLE IF NOT EXISTS `todo` (\n" +
     "\t`id`\tINTEGER NOT NULL,\n" +
     "\t`title`\tTEXT NOT NULL,\n" +
     "\t`description`\tTEXT,\n" +
     "\t`status`\tINTEGER NOT NULL DEFAULT 0\n" +
     ");"
+
+const select_all_todos = "SELECT DISTINCT title,description,status FROM todo ORDER BY status;"
+
+
 
 /**
  * loads the sqlite3 using the sepcified the db path.
@@ -25,3 +29,19 @@ exports.closeConnection = function(err) {
     }
     console.log('Close the database connection.');
 };
+
+/**
+ * [getAll get all the todos saved from db]
+ * @param  {[string]} db     [description]
+ * @param  {[array]} params [description]
+ * @return {[type]}        [description]
+ */
+exports.getTodos = function(db,params,response){
+    var arr = [];
+    db.each(select_all_todos, function(err, row)  {
+      if (err) throw err;  
+      console.log('rsult ->'+row.title+'-'+row.description)    
+      arr.push(row);
+      return response.json(arr);      
+    });   
+}
