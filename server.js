@@ -32,13 +32,13 @@ app.get('/chance', function (request, response) {
 })
 
 
-var responsehandler = function(err,data){
-    if(err){
-        console.log('error occured printed in  callback')
-    }
-    console.log('in callback ->'+data);
+// var responsehandler = function(err,data){
+//     if(err){
+//         console.log('error occured printed in  callback')
+//     }
+//     console.log('in callback ->'+data);
 
-}
+// }
 
 // var completeHandler = function(err,totalRows,resultarray){
 //     console.log('call completed ....'+totalRows)
@@ -53,7 +53,7 @@ var responsehandler = function(err,data){
 app.get('/todo', function (request, response) {
 
     console.log('calling todo .. ')
-    dao.getTodos(db,[],responsehandler,function(err,totalRows,resultarray){
+    dao.getTodos(db,[],function(err,totalRows,resultarray){
         response.json(resultarray)
     })   
     //dao.insertTodo(db,[],response)

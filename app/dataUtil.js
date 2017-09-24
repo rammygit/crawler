@@ -36,7 +36,7 @@ exports.closeConnection = function(err) {
  * @param  {[array]} params [description]
  * @return {[type]}        [description]
  */
-exports.getTodos = function(db,params,callback,completeCallback){
+exports.getTodos = function(db,params,completeCallback){
     var arr = [];
     db.each(select_all_todos, function(err, row)  {
       if (err) {
@@ -45,7 +45,7 @@ exports.getTodos = function(db,params,callback,completeCallback){
       }
       console.log('rsult ->'+row.title)    
       arr.push(row);     
-      callback(null,row);   
+      //callback(null,row);   
       //return response.json(arr);      
     },
     function complete(err,found){
