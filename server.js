@@ -1,8 +1,7 @@
 
 const express = require('express')
-const util = require('./app/utility')
-const db = require('./app/connection')
-const dao = require('./app/dataUtil')
+//const util = require('./app/utility')
+const handler = require('./app/handler')
 const app = express()
 const port = 3001
 
@@ -17,49 +16,19 @@ const port = 3001
 app.get('/', function(request,response) {
     // check if table got created on the first call. create the connection
     console.log('calling root route.')
-    dao.initDB(db);
+    handler.initDBHandler()
     response.sendFile(__dirname+ '/index.html');
 });
 
 /**
- * express gives default router for us to work with
- */
-app.get('/chance', function (request, response) {
-    console.log('calling chance api ')
-    response.json({
-        chance: request.chance
-    })
-})
-
-
-// var responsehandler = function(err,data){
-//     if(err){
-//         console.log('error occured printed in  callback')
-//     }
-//     console.log('in callback ->'+data);
-
-// }
-
-// var completeHandler = function(err,totalRows,resultarray){
-//     console.log('call completed ....'+totalRows)
-//     console.log('result at complete -> '+JSON.stringify(resultarray))
-
-
-// 
-
-var todoResponseHandler = function (request, response) {
-
-    console.log('calling todo .. ')
-    dao.getTodos(db,[],function(err,totalRows,resultarray){
-        response.json(resultarray)
-    })   
-    //dao.insertTodo(db,[],response)
-}
-
-/**
  * todo api for display todo
  */
-app.get('/todo', todoResponseHandler)
+app.get('/todo', handler.todoResponseHandler)
+
+/**
+ * 
+ */
+app.post('/addTodo', handler.addTodoHandler);
 
 /**
  * generic error handling. 
