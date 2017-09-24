@@ -40,10 +40,12 @@ var responsehandler = function(err,data){
 
 }
 
-var completeHandler = function(err,totalRows,resultarray){
-    console.log('call completed ....'+totalRows)
-    console.log('result at complete -> '+JSON.stringify(resultarray))
-}
+// var completeHandler = function(err,totalRows,resultarray){
+//     console.log('call completed ....'+totalRows)
+//     console.log('result at complete -> '+JSON.stringify(resultarray))
+
+
+// }
 
 /**
  * todo api for display todo
@@ -51,7 +53,9 @@ var completeHandler = function(err,totalRows,resultarray){
 app.get('/todo', function (request, response) {
 
     console.log('calling todo .. ')
-    dao.getTodos(db,[],responsehandler,completeHandler)   
+    dao.getTodos(db,[],responsehandler,function(err,totalRows,resultarray){
+        response.json(resultarray)
+    })   
     //dao.insertTodo(db,[],response)
 })
 
