@@ -45,19 +45,21 @@ app.get('/chance', function (request, response) {
 //     console.log('result at complete -> '+JSON.stringify(resultarray))
 
 
-// }
+// 
 
-/**
- * todo api for display todo
- */
-app.get('/todo', function (request, response) {
+var todoResponseHandler = function (request, response) {
 
     console.log('calling todo .. ')
     dao.getTodos(db,[],function(err,totalRows,resultarray){
         response.json(resultarray)
     })   
     //dao.insertTodo(db,[],response)
-})
+}
+
+/**
+ * todo api for display todo
+ */
+app.get('/todo', todoResponseHandler)
 
 /**
  * generic error handling. 

@@ -39,20 +39,13 @@ exports.closeConnection = function(err) {
 exports.getTodos = function(db,params,completeCallback){
     var arr = [];
     db.each(select_all_todos, function(err, row)  {
-      if (err) {
-        callback(err,null)
-        //throw err;  
-      }
-      console.log('rsult ->'+row.title)    
-      arr.push(row);     
-      //callback(null,row);   
-      //return response.json(arr);      
+      if (err)    
+        throw err; 
+      arr.push(row);             
     },
     function complete(err,found){
         completeCallback(err,found,arr)
     }); 
-    
-    
 }
 
 /**
