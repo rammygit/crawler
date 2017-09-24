@@ -7,7 +7,7 @@ const create_todos = "CREATE TABLE IF NOT EXISTS `todo` (\n" +
     "\t`status`\tINTEGER NOT NULL DEFAULT 0\n" +
     ");"
 
-const select_all_todos = "SELECT DISTINCT title,description,status FROM todo ORDER BY status;"
+const select_all_todos = "SELECT title,description,status FROM todo;"
 
 const insert_todo = 'insert into todo(title,description,status)values(\'myitem\',\'great desc\',0);'
 
@@ -36,14 +36,23 @@ exports.closeConnection = function(err) {
  * @param  {[array]} params [description]
  * @return {[type]}        [description]
  */
-exports.getTodos = function(db,params,response){
+exports.getTodos = function(db,params,callback,completeCallback){
     var arr = [];
     db.each(select_all_todos, function(err, row)  {
-      if (err) throw err;  
-      console.log('rsult ->'+row.title+'-'+row.description)    
-      arr.push(row);
-      return response.json(arr);      
-    });   
+      if (err) {
+        callback(err,null)
+        //throw err;  
+      }
+      console.log('rsult ->'+row.title)    
+      arr.push(row);     
+      callback(null,row);   
+      //return response.json(arr);      
+    },
+    function complete(err,found){
+        completeCallback(err,found,arr)
+    }); 
+    
+    
 }
 
 /**
