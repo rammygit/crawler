@@ -5,7 +5,7 @@ const handler = require('./app/handler')
 const app = express()
 const port = 3001
 
-//app.use(express.static(__dirname))
+app.use(express.static(__dirname))
 
 /**
  * home page.
@@ -26,7 +26,7 @@ app.get('/', function(request,response) {
 app.get('/todo', handler.todoResponseHandler)
 
 /**
- * 
+ * API to add a todo.
  */
 app.post('/addTodo', handler.addTodoHandler);
 
