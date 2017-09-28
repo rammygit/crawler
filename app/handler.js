@@ -1,6 +1,7 @@
 const db = require('./connection')
 const dao = require('./dataUtil')
 
+
 /**
  * contains logic for handling the incoming request and return return appropriate response. 
  * 
@@ -18,7 +19,8 @@ var handler = {
 	    })       
 	},
 	addTodoHandler:function(request,response){
-		//console.log('add todo handler called!')
+		console.log('add todo handler called!')
+		dao.insertTodo(db,[request.body.todoText,request.body.todoDesc,0])
 	}
 }
 

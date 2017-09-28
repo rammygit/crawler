@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Work Items</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css"> -->
 </head>
 <body>
 
 <div id="app">
+    <p>{{ message }}</p>
     <div class="columns medium-3" v-for="result in results">
         <div class="card">
             <div class="card-divider">
@@ -19,7 +20,9 @@
             </div>
         </div>
     </div>
-    <button v-on:click="reverseMessage">Reverse Message</button>
+    What you want to do : <input v-model="todoText"><br>
+    Describe it better : <input v-model="todoDesc"><br>
+    <button v-on:click="createTodo">Save it</button>
 </div>
 
 <script src="https://unpkg.com/vue"></script>

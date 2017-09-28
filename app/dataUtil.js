@@ -9,7 +9,7 @@ const create_todos = "CREATE TABLE IF NOT EXISTS `todo` (\n" +
 
 const select_all_todos = "SELECT title,description,status FROM todo;"
 
-const insert_todo = 'insert into todo(title,description,status)values(\'myitem\',\'great desc\',0);'
+const insert_todo = 'insert into todo(title,description,status)values(?,?,?);'
 
 /**
  * loads the sqlite3 using the sepcified the db path.
@@ -55,8 +55,8 @@ exports.getTodos = function(db,params,completeCallback){
  * @param  {[type]} response [description]
  * @return {[type]}          [description]
  */
-exports.insertTodo = function(db,params,response){
-    db.run(insert_todo,function(err){
+exports.insertTodo = function(db,params){
+    db.run(insert_todo,params,function(err){
         if(err) throw err;
         console.log(this.lastID)
     })

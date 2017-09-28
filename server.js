@@ -2,11 +2,14 @@
 const express = require('express')
 //const util = require('./app/utility')
 const handler = require('./app/handler')
+var bodyParser = require('body-parser');
+
 const app = express()
 const port = 3001
 
 app.use(express.static(__dirname))
-
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /**
  * home page.
  * loads the db.
