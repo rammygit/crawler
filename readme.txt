@@ -1,8 +1,26 @@
-Vue.js / Node.js / ExpressJS / MySql
+Vue.js / Node.js / ExpressJS / Sqlite ( may be add mysql support in future)
 
-Run this
+What is this project about ? 
 
-1. node index.js - to test the file read
-2. node server.js - to start the http server.
+- Nothing but to create a simple todo application. 
+- primarily to solve my home problem
+- Learning exercise
+- using this for few other projects.
 
-3. npm start - alternative to node index.js
+Tools/Frameworks I chose to use
+
+- Vue.js
+- Bootstrap 4 beta.
+- Express.js
+- sqlite 3
+- sublime text ( preferred IDE ) 
+- email sender framework ( TBD )
+
+Developer setup ( for local )
+
+- clone this project 
+- cd to this project location and do "npm start"
+
+
+Any ideas or Issues , do open up or start a conversion.
+
