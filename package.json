@@ -12,13 +12,15 @@
   "dependencies": {
     "async": "^2.5.0",
     "axios": "^0.16.2",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
+    "sqlite": "^2.8.0",
+    "sqlite3": "^3.1.11",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "mocha": "^3.5.3",
-    "sqlite3": "^3.1.11"
+    "mocha": "^3.5.3"
   }
 }
